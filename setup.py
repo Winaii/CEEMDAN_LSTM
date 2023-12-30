@@ -15,7 +15,7 @@ setuptools.setup(
                       'vmdpy',
                       'sampen',
                       'matplotlib',
-                      'sklearn',
+                      'scikit-learn',
                       'tensorflow >= 2.5.0',
                       ],
     package_data={'CEEMDAN_LSTM': ['datasets/*']},

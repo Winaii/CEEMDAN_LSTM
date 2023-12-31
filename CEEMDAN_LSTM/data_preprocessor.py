@@ -457,10 +457,11 @@ def eval_result(y_real, y_pred):
     y_real, y_pred = np.array(y_real).ravel(), np.array(y_pred).ravel()
     scale = np.max(y_real) - np.min(y_real) # scale is important for RMSE and MAE
     r2 = r2_score(y_real, y_pred)
+    mse = mean_squared_error(y_real, y_pred, squared=True)
     rmse = mean_squared_error(y_real, y_pred, squared=False) # RMSE and MAE are various on different scales
     mae = mean_absolute_error(y_real, y_pred)
     mape = mean_absolute_percentage_error(y_real, y_pred) # Note that dataset cannot have any 0 value.
-    df_eval = pd.DataFrame({'Scale':scale, 'R2':r2, 'RMSE':rmse, 'MAE':mae, 'MAPE':mape}, index=[0])
+    df_eval = pd.DataFrame({'Scale':scale, 'R2':r2, 'MSE':mse, 'RMSE':rmse, 'MAE':mae, 'MAPE':mape}, index=[0])
     return df_eval
 
 # 3.1. Normalize

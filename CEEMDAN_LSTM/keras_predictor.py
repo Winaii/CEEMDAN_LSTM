@@ -693,7 +693,7 @@ class keras_predictor:
         # Forecast
         start = time.time()
         df_pred_result = pd.DataFrame(index = self.TARGET.index[-self.FORECAST_LENGTH:0]) # df for storing forecasting result
-        df_eval_result = pd.DataFrame(columns=['Scale', 'R2', 'RMSE', 'MAE', 'MAPE', 'Runtime', 'IMF']) # df for storing evaluation result
+        df_eval_result = pd.DataFrame(columns=['Scale', 'R2', 'mse', 'RMSE', 'MAE', 'MAPE', 'Runtime', 'IMF']) # df for storing evaluation result
         df_next_result = pd.DataFrame(columns=['today_real', 'today_pred', 'next_pred', 'Runtime', 'IMF']) # df for storing Next-day forecasting result
         for i in range(run_times):
             print('Run %d is running...'%i, end='')

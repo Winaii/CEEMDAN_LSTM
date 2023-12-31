@@ -58,11 +58,7 @@ def decom(series=None, decom_mode='ceemdan', vmd_params=None, FORECAST_LENGTH=No
     Output:
     ---------------------
     df_decom   - the decomposing results in pd.Dataframe
-    """
-    # 修改：检查输入是否为DataFrame，如果是，则将其展平
-    if isinstance(series, pd.DataFrame):
-        series = series.values.flatten()  # 展平多维数据为一维数组
-        
+    """ 
     if series is None: raise ValueError('Please input pd.Series, or pd.DataFrame(1D), nd.array(1D).')
     try: series = pd.Series(series)
     except: raise ValueError('Sorry! %s is not supported to decompose, please input pd.Series, or pd.DataFrame(1D), nd.array(1D).'%type(series))

@@ -461,7 +461,8 @@ def eval_result(y_real, y_pred):
     rmse = mean_squared_error(y_real, y_pred, squared=False) # RMSE and MAE are various on different scales
     mae = mean_absolute_error(y_real, y_pred)
     mape = mean_absolute_percentage_error(y_real, y_pred) # Note that dataset cannot have any 0 value.
-    df_eval = pd.DataFrame({'Scale':scale, 'R2':r2, 'MSE':mse, 'RMSE':rmse, 'MAE':mae, 'MAPE':mape}, index=[0])
+    da = np.mean((np.sign(y_pred[1:] - y_pred[:-1]) == np.sign(y_real[1:] - y_real[:-1])).astype(float)) * 100
+    df_eval = pd.DataFrame({'Scale':scale, 'R2':r2, 'MSE':mse, 'RMSE':rmse, 'MAE':mae, 'MAPE':mape, 'DA':da}, index=[0])
     return df_eval
 
 # 3.1. Normalize
